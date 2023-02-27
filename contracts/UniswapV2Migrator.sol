@@ -1,5 +1,8 @@
 pragma solidity =0.6.6;
 
+// 主要目的是用来统一处理标准ERC20代币和非标准ERC20代币之间部分函数的返回值问题（主要是转移代币和授权的返回值）。
+// 它通过使用一个低级的call函数调用来代替正常的合约调用，并对执行结果和返回值做处理。
+// 这样处理的目的见UniswapV2介绍。
 import '@uniswap/lib/contracts/libraries/TransferHelper.sol';
 
 import './interfaces/IUniswapV2Migrator.sol';
