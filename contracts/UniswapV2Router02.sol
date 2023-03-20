@@ -114,7 +114,7 @@ contract UniswapV2Router02 is IUniswapV2Router02 {
         (amountA, amountB) = _addLiquidity(tokenA, tokenB, amountADesired, amountBDesired, amountAMin, amountBMin);
         // 获取交易对地址（注意，如果交易对不存在，在对_addLiquidity调用时会创建）。
         // 注意，它和_addLiquidity函数获取交易对地址略有不同，一个是调用factory合约的接口得到
-        // （这里不能使用根据salt创建合约的方式计算得到，因为不管合约是否存在，总能得到该地址）；
+        // （factory合约的接口不能使用根据salt创建合约的方式计算得到，因为不管合约是否存在，总能得到该地址）；
         // 另一个是根据salt创建合约的方式计算得到。虽然两者用起来都没有问题，
         // 个人猜想本函数使用salt方式计算是因为调用的库函数是pure的，不读取状态变量，并且为内部调用，能节省gas；
         // 而调用factory合约接口是个外部EVM调用，有额外的开销。个人猜想，未必正确。
